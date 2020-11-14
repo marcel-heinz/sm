@@ -32,8 +32,9 @@ class NewVisitorTest(unittest.TestCase):
         time.sleep(1)
 
         table = self.browser.find_element_by_id('id_list_table')
-        rows = table.find_element_by_tag_name('tr')
-        self.assertTrue(any(row.text == "Schwerin" for row in rows))
+        rows = table.find_elements_by_tag_name('tr')
+        self.assertTrue(any(row.text == "Schwerin" for row in rows),
+                        f'New City Not In Table. Content is {table.text}')
 
         # generate unique url to rember city
 
